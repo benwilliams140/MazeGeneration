@@ -4,8 +4,9 @@
 #include <iostream>
 
 #include "Window.h"
-#include "Box.h"
+#include "MazeCell.h"
 #include "Array2D.h"
+#include "Algorithm.h"
 
 class Maze
 {
@@ -15,17 +16,20 @@ public:
 
 	void update();
 	void render(Window*);
+	void reload(int, int);
+	void generate();
 
 	int getSize();
-	int getBoxSize();
-
-	void reload(int, int);
+	int getCellSize();
 
 private:
 	int size = 32;
-	int boxSize = 25;
+	int cellSize = 25;
 
-	Array2D<Box*> maze = Array2D<Box*>(size, size);
+	bool generating;
+
+	Array2D<MazeCell*> maze = Array2D<MazeCell*>(size, size);
+	Algorithm* algorithm;
 };
 
 #endif

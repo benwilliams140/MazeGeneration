@@ -26,6 +26,10 @@ void GUI::init()
 	panel = tgui::Panel::create({ width, height });
 	panel->setPosition(window->getWidth() - width, 0);
 	gui.add(panel);
+
+	btnStart = tgui::Button::create("Start");
+	btnStart->setPosition(5, 5);
+	panel->add(btnStart, "btnStart");
 }
 
 tgui::Widget::Ptr GUI::getWidgetByName(std::string _name)

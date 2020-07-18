@@ -1,6 +1,8 @@
 #ifndef APPLICATION_H
 #define APPLICATION_H
 
+#include <thread>
+
 #include "Window.h"
 #include "Maze.h"
 #include "GUI.h"

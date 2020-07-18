@@ -29,7 +29,7 @@ Array2D<T>::Array2D(int _cols, int _rows) : cols(_cols), rows(_rows)
 		arr[_col] = new T[rows];
 		for (int _row = 0; _row < rows; ++_row)
 		{
-			arr[_col][_row] = NULL;
+			arr[_col][_row] = 0;
 		}
 	}
 }
@@ -50,7 +50,7 @@ void Array2D<T>::clear()
 		for (int _row = 0; _row < rows; ++_row)
 		{
 			delete arr[_col][_row];
-			arr[_col][_row] = NULL;
+			arr[_col][_row] = 0;
 		}
 	}
 }

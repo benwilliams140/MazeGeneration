@@ -1,6 +1,6 @@
-#include "Box.h"
+#include "MazeCell.h"
 
-Box::Box(int _size, int _col, int _row) : visited(false)
+MazeCell::MazeCell(int _size, int _col, int _row) : visited(false), col(_col), row(_row)
 {
 	int _curX, _curY, _nextX, _nextY;
 	_curX = _col * _size;
@@ -14,7 +14,7 @@ Box::Box(int _size, int _col, int _row) : visited(false)
 		_nextX = _curX + _deltaX * _size;
 		_nextY = _curY + _deltaY * _size;
 		
-		lines[i] = new Line(_curX, _curY, _nextX, _nextY);
+		walls[i] = new MazeWall(_curX, _curY, _nextX, _nextY);
 		
 		_curX = _nextX;
 		_curY = _nextY;
@@ -26,20 +26,35 @@ Box::Box(int _size, int _col, int _row) : visited(false)
 	rect.setFillColor(sf::Color(146, 146, 146));
 }
 
-Box::~Box()
+MazeCell::~MazeCell()
 {
 
 }
 
-void Box::update()
+void MazeCell::update()
 {
-
+	rect.setFillColor(sf::Color::Red);
 }
 
-void Box::render(Window* _window)
+void MazeCell::render(Window* _window)
 {
 	_window->render(rect);
 
 	for (int i = 0; i < 4; ++i)
-		lines[i]->render(_window);
+		walls[i]->render(_window);
+}
+
+int MazeCell::getCol()
+{
+	return col;
+}
+
+int MazeCell::getRow()
+{
+	return row;
+}
+
+void MazeCell::setColor(sf::Color _color)
+{
+	rect.setFillColor(_color);
 }

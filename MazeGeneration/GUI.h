@@ -24,6 +24,7 @@ private:
 
 	tgui::Gui gui;
 	tgui::Panel::Ptr panel;
+	tgui::Button::Ptr btnStart;
 
 	int width, height;
 };

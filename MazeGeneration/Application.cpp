@@ -1,14 +1,16 @@
 #include "Application.h"
 
-Application::Application() : timeSinceLastUpdate(0), timeBetweenUpdates(0.1)
+Application::Application() : timeSinceLastUpdate(0), timeBetweenUpdates(0.01)
 {
 	maze = new Maze();
 	
-	int _windowWidth = maze->getSize() * maze->getBoxSize() + GUI_WIDTH;
-	int _windowHeight = maze->getSize() * maze->getBoxSize();
+	int _windowWidth = maze->getSize() * maze->getCellSize() + GUI_WIDTH;
+	int _windowHeight = maze->getSize() * maze->getCellSize();
 
 	window = new Window(WINDOW_TITLE, _windowWidth, _windowHeight);
 	gui = new GUI(window, GUI_WIDTH, _windowHeight);
+
+	initGUI();
 }
 
 Application::~Application()
@@ -67,5 +69,12 @@ void Application::render()
 
 void Application::initGUI()
 {
-
+	tgui::Widget::Ptr _widget = gui->getWidgetByName("btnStart");
+	if (_widget)
+	{
+		_widget->connect(tgui::Signals::Button::Pressed, [&]()
+			{
+				maze->generate();
+			});
+	}
 }
