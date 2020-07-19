@@ -2,6 +2,8 @@
 
 Application::Application() : timeSinceLastUpdate(0), timeBetweenUpdates(0.01)
 {
+	srand(time(NULL));
+
 	maze = new Maze();
 	
 	int _windowWidth = maze->getSize() * maze->getCellSize() + GUI_WIDTH;

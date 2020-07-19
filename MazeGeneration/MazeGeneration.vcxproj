@@ -151,6 +151,7 @@
     <ClCompile Include="MazeWall.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Maze.cpp" />
+    <ClCompile Include="RecursiveBacktracking.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +163,7 @@
     <ClInclude Include="GUI.h" />
     <ClInclude Include="MazeWall.h" />
     <ClInclude Include="Maze.h" />
+    <ClInclude Include="RecursiveBacktracking.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

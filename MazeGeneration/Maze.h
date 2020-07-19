@@ -2,11 +2,15 @@
 #define MAZE_H
 
 #include <iostream>
+#include <string>
 
 #include "Window.h"
 #include "MazeCell.h"
 #include "Array2D.h"
+
 #include "Algorithm.h"
+#include "RecursiveBacktracking.h"
+
 #include "Common.h"
 
 class Maze
@@ -29,7 +33,9 @@ public:
 private:
 	int size = 32;
 	int cellSize = 25;
+
 	Array2D<MazeCell*> maze = Array2D<MazeCell*>(size, size);
+	MazeCell* startingCell;
 
 	bool generating, solving;
 	Algorithm* generation;

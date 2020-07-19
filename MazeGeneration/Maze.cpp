@@ -10,6 +10,8 @@ Maze::Maze() : generating(false), solving(false), genAlgorithm(RECURSIVE_BACKTRA
 		}
 	}
 
+	startingCell = maze[0][0];
+
 	generation = NULL;
 	solution = NULL;
 }
@@ -43,6 +45,9 @@ void Maze::render(Window* _window)
 
 void Maze::generate()
 {
+	if (!genAlgorithm.compare(RECURSIVE_BACKTRACKING))
+		generation = new RecursiveBacktracking(startingCell);
+	
 	std::cout << "Generation using " << genAlgorithm << "\nSolution using " << solAlgorithm << std::endl << std::endl;
 	generating = true;
 }

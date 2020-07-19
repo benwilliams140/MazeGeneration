@@ -23,7 +23,7 @@ MazeCell::MazeCell(int _size, int _col, int _row) : visited(false), col(_col), r
 	rect.setSize(sf::Vector2f(_size, _size));
 	rect.setOrigin(sf::Vector2f(0, 0));
 	rect.setPosition(sf::Vector2f(_col * _size, _row * _size));
-	rect.setFillColor(sf::Color(146, 146, 146));
+	rect.setFillColor(INITIAL_COLOR);
 }
 
 MazeCell::~MazeCell()
@@ -41,7 +41,31 @@ void MazeCell::render(Window* _window)
 	_window->render(rect);
 
 	for (int i = 0; i < 4; ++i)
-		walls[i]->render(_window);
+	{
+		if(walls[i]) walls[i]->render(_window);
+	}
+}
+
+void MazeCell::removeWall(MazeCell* _nextCell)
+{
+	MazeWall* _wall;
+	int _index = 0;
+
+	if (_nextCell->getRow() < row) // top
+		_index = 0;
+	else if (_nextCell->getCol() > col) // right
+		_index = 1;
+	else if (_nextCell->getRow() > row) // bottom
+		_index = 2;
+	else if (_nextCell->getCol() < col) // left
+		_index = 3;
+
+	_wall = walls[_index];
+	walls[_index] = NULL;
+	delete _wall;
+
+	if (_nextCell->getWall((_index + 2) % 4))
+		_nextCell->removeWall(this);
 }
 
 int MazeCell::getCol()
@@ -54,7 +78,23 @@ int MazeCell::getRow()
 	return row;
 }
 
+MazeWall* MazeCell::getWall(int _index)
+{
+	return walls[_index];
+}
+
 void MazeCell::setColor(sf::Color _color)
 {
 	rect.setFillColor(_color);
+}
+
+bool MazeCell::isVisited()
+{
+	return visited;
+}
+
+void MazeCell::visit()
+{
+	visited = true;
+	rect.setFillColor(VISITED_COLOR);
 }

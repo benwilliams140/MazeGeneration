@@ -2,6 +2,8 @@
 #define APPLICATION_H
 
 #include <thread>
+#include <stdlib.h>
+#include <time.h>
 
 #include "Window.h"
 #include "Maze.h"
