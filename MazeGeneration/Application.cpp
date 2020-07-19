@@ -87,7 +87,7 @@ void Application::initGUI()
 			});
 	}
 
-	_widget = gui->getWidgetByName("solGeneration");
+	_widget = gui->getWidgetByName("lboSolution");
 	if (_widget)
 	{
 		_widget->connect(tgui::Signals::ListBox::ItemSelected, [&](std::string _item)
