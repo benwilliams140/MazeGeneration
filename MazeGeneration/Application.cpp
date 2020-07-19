@@ -77,4 +77,22 @@ void Application::initGUI()
 				maze->generate();
 			});
 	}
+
+	_widget = gui->getWidgetByName("lboGeneration");
+	if (_widget)
+	{
+		_widget->connect(tgui::Signals::ListBox::ItemSelected, [&](std::string _item)
+			{
+				maze->setGenerationAlgorithm(_item);
+			});
+	}
+
+	_widget = gui->getWidgetByName("solGeneration");
+	if (_widget)
+	{
+		_widget->connect(tgui::Signals::ListBox::ItemSelected, [&](std::string _item)
+			{
+				maze->setSolutionAlgorithm(_item);
+			});
+	}
 }

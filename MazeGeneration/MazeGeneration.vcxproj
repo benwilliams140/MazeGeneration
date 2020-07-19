@@ -157,6 +157,7 @@
     <ClInclude Include="Algorithm.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Array2D.h" />
+    <ClInclude Include="Common.h" />
     <ClInclude Include="MazeCell.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="MazeWall.h" />

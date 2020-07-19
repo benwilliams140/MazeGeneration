@@ -7,6 +7,7 @@
 #include "MazeCell.h"
 #include "Array2D.h"
 #include "Algorithm.h"
+#include "Common.h"
 
 class Maze
 {
@@ -22,14 +23,18 @@ public:
 	int getSize();
 	int getCellSize();
 
+	void setGenerationAlgorithm(std::string);
+	void setSolutionAlgorithm(std::string);
+
 private:
 	int size = 32;
 	int cellSize = 25;
-
-	bool generating;
-
 	Array2D<MazeCell*> maze = Array2D<MazeCell*>(size, size);
-	Algorithm* algorithm;
+
+	bool generating, solving;
+	Algorithm* generation;
+	Algorithm* solution;
+	std::string genAlgorithm, solAlgorithm;
 };
 
 #endif

@@ -27,8 +27,32 @@ void GUI::init()
 	panel->setPosition(window->getWidth() - width, 0);
 	gui.add(panel);
 
+	lboGeneration = tgui::ListBox::create();
+	lboGeneration->addItem(RECURSIVE_BACKTRACKING);
+	lboGeneration->addItem(ELLER);
+	lboGeneration->addItem(KRUSKAL);
+	lboGeneration->addItem(PRIM);
+	lboGeneration->addItem(RECURSIVE_DIVISION);
+	lboGeneration->addItem(ALDOUS_BRODER);
+	lboGeneration->addItem(WILSON);
+	lboGeneration->addItem(HUNT_AND_KILL);
+	lboGeneration->addItem(GROWING_TREE);
+	lboGeneration->addItem(BINARY_TREE);
+	lboGeneration->addItem(SIDEWINDER);
+	lboGeneration->setPosition(5, 5);
+	lboGeneration->setSelectedItemByIndex(0);
+	panel->add(lboGeneration, "lboGeneration");
+
+	lboSolution = tgui::ListBox::create();
+	lboSolution->addItem(A_STAR);
+	lboSolution->addItem(DIJKSTRA);
+	lboSolution->addItem(D_STAR);
+	lboSolution->setPosition(5, lboGeneration->getPosition().y + lboGeneration->getSize().y + 5);
+	lboSolution->setSelectedItemByIndex(0);
+	panel->add(lboSolution, "lboSolution");
+
 	btnStart = tgui::Button::create("Start");
-	btnStart->setPosition(5, 5);
+	btnStart->setPosition(5, lboSolution->getPosition().y + lboSolution->getSize().y + 5);
 	panel->add(btnStart, "btnStart");
 }
 

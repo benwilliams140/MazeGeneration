@@ -1,6 +1,6 @@
 #include "Maze.h"
 
-Maze::Maze() : generating(false)
+Maze::Maze() : generating(false), solving(false), genAlgorithm(RECURSIVE_BACKTRACKING), solAlgorithm(A_STAR)
 {
 	for (int _col = 0; _col < size; ++_col)
 	{
@@ -10,7 +10,8 @@ Maze::Maze() : generating(false)
 		}
 	}
 
-	algorithm = new Algorithm();
+	generation = NULL;
+	solution = NULL;
 }
 
 Maze::~Maze()
@@ -20,7 +21,13 @@ Maze::~Maze()
 
 void Maze::update()
 {
-	if (generating) generating = algorithm->update(maze);
+	if (generating && generation)
+	{
+		generating = generation->update(maze);
+		if (!generating) solving = true;
+	}
+
+	if (solving && solution) solving = solution->update(maze);
 }
 
 void Maze::render(Window* _window)
@@ -36,7 +43,7 @@ void Maze::render(Window* _window)
 
 void Maze::generate()
 {
-	//std::cout << "Generating" << std::endl;
+	std::cout << "Generation using " << genAlgorithm << "\nSolution using " << solAlgorithm << std::endl << std::endl;
 	generating = true;
 }
 
@@ -53,4 +60,14 @@ int Maze::getCellSize()
 void Maze::reload(int _size, int _windowWidth)
 {
 
+}
+
+void Maze::setGenerationAlgorithm(std::string _genAlgorithm)
+{
+	genAlgorithm = _genAlgorithm;
+}
+
+void Maze::setSolutionAlgorithm(std::string _solAlgorithm)
+{
+	solAlgorithm = _solAlgorithm;
 }

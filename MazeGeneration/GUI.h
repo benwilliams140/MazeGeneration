@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "Window.h"
+#include "Common.h"
 
 class GUI
 {
@@ -25,6 +26,8 @@ private:
 	tgui::Gui gui;
 	tgui::Panel::Ptr panel;
 	tgui::Button::Ptr btnStart;
+	tgui::ListBox::Ptr lboGeneration;
+	tgui::ListBox::Ptr lboSolution;
 
 	int width, height;
 };
