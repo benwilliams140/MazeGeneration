@@ -12,6 +12,7 @@
 const sf::Color INITIAL_COLOR = sf::Color(146, 146, 146);
 const sf::Color VISITED_COLOR = sf::Color(255, 0, 255);
 const sf::Color PATH_COLOR = sf::Color(0, 255, 0);
+const sf::Color CUR_CELL_COLOR = sf::Color(0, 0, 255);
 
 class MazeCell
 {

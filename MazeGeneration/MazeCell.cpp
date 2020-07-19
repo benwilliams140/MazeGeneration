@@ -33,7 +33,7 @@ MazeCell::~MazeCell()
 
 void MazeCell::update()
 {
-	rect.setFillColor(sf::Color::Red);
+	if (visited) rect.setFillColor(VISITED_COLOR);
 }
 
 void MazeCell::render(Window* _window)
@@ -96,5 +96,5 @@ bool MazeCell::isVisited()
 void MazeCell::visit()
 {
 	visited = true;
-	rect.setFillColor(VISITED_COLOR);
+	rect.setFillColor(CUR_CELL_COLOR);
 }

@@ -1,6 +1,6 @@
 #include "Application.h"
 
-Application::Application() : timeSinceLastUpdate(0), timeBetweenUpdates(0.01)
+Application::Application() : timeSinceLastUpdate(0), timeBetweenUpdates(0)
 {
 	srand(time(NULL));
 

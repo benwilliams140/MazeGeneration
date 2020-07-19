@@ -23,6 +23,14 @@ Maze::~Maze()
 
 void Maze::update()
 {
+	for (int _col = 0; _col < size; ++_col)
+	{
+		for (int _row = 0; _row < size; ++_row)
+		{
+			maze[_col][_row]->update();
+		}
+	}
+
 	if (generating && generation)
 	{
 		generating = generation->update(maze);
