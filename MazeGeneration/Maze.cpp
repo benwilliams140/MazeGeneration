@@ -23,6 +23,7 @@ Maze::~Maze()
 
 void Maze::update()
 {
+	/*
 	for (int _col = 0; _col < size; ++_col)
 	{
 		for (int _row = 0; _row < size; ++_row)
@@ -30,6 +31,7 @@ void Maze::update()
 			if(generating || solving) maze[_col][_row]->update();
 		}
 	}
+	*/
 
 	if (generating && generation)
 	{
@@ -70,6 +72,12 @@ void Maze::resume()
 {
 	generating = true;
 	solving = true;
+}
+
+void Maze::step()
+{
+	if (!generating && generation) generation->update(maze);
+	if (!solving && solution) solution->update(maze);
 }
 
 int Maze::getSize()

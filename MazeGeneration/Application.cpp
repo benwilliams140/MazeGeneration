@@ -115,4 +115,13 @@ void Application::initGUI()
 				maze->resume();
 			});
 	}
+
+	_widget = gui->getWidgetByName("btnStep");
+	if (_widget)
+	{
+		_widget->connect(tgui::Signals::Button::Pressed, [&]()
+			{
+				maze->step();
+			});
+	}
 }

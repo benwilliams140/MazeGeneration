@@ -26,6 +26,7 @@ public:
 
 	void pause();
 	void resume();
+	void step();
 
 	int getSize();
 	int getCellSize();

@@ -62,6 +62,10 @@ void GUI::init()
 	btnResume = tgui::Button::create("Resume");
 	btnResume->setPosition(btnPause->getPosition().x + btnPause->getSize().x + 5, btnStart->getPosition().y);
 	panel->add(btnResume, "btnResume");
+
+	btnStep = tgui::Button::create("Step");
+	btnStep->setPosition(btnStart->getPosition().x, btnStart->getPosition().y + btnStart->getSize().y + 5);
+	panel->add(btnStep, "btnStep");
 }
 
 tgui::Widget::Ptr GUI::getWidgetByName(std::string _name)
