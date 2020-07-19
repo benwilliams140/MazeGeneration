@@ -26,6 +26,8 @@ private:
 	tgui::Gui gui;
 	tgui::Panel::Ptr panel;
 	tgui::Button::Ptr btnStart;
+	tgui::Button::Ptr btnPause;
+	tgui::Button::Ptr btnResume;
 	tgui::ListBox::Ptr lboGeneration;
 	tgui::ListBox::Ptr lboSolution;
 

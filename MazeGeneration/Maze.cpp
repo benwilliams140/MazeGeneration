@@ -27,7 +27,7 @@ void Maze::update()
 	{
 		for (int _row = 0; _row < size; ++_row)
 		{
-			maze[_col][_row]->update();
+			if(generating || solving) maze[_col][_row]->update();
 		}
 	}
 
@@ -56,8 +56,20 @@ void Maze::generate()
 	if (!genAlgorithm.compare(RECURSIVE_BACKTRACKING))
 		generation = new RecursiveBacktracking(startingCell);
 	
-	std::cout << "Generation using " << genAlgorithm << "\nSolution using " << solAlgorithm << std::endl << std::endl;
+	//std::cout << "Generation using " << genAlgorithm << "\nSolution using " << solAlgorithm << std::endl << std::endl;
 	generating = true;
+}
+
+void Maze::pause()
+{
+	generating = false;
+	solving = false;
+}
+
+void Maze::resume()
+{
+	generating = true;
+	solving = true;
 }
 
 int Maze::getSize()

@@ -54,6 +54,14 @@ void GUI::init()
 	btnStart = tgui::Button::create("Start");
 	btnStart->setPosition(5, lboSolution->getPosition().y + lboSolution->getSize().y + 5);
 	panel->add(btnStart, "btnStart");
+
+	btnPause = tgui::Button::create("Pause");
+	btnPause->setPosition(btnStart->getPosition().x + btnStart->getSize().x + 5, btnStart->getPosition().y);
+	panel->add(btnPause, "btnPause");
+	
+	btnResume = tgui::Button::create("Resume");
+	btnResume->setPosition(btnPause->getPosition().x + btnPause->getSize().x + 5, btnStart->getPosition().y);
+	panel->add(btnResume, "btnResume");
 }
 
 tgui::Widget::Ptr GUI::getWidgetByName(std::string _name)

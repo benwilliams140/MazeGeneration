@@ -97,4 +97,22 @@ void Application::initGUI()
 				maze->setSolutionAlgorithm(_item);
 			});
 	}
+
+	_widget = gui->getWidgetByName("btnPause");
+	if (_widget)
+	{
+		_widget->connect(tgui::Signals::Button::Pressed, [&]()
+			{
+				maze->pause();
+			});
+	}
+
+	_widget = gui->getWidgetByName("btnResume");
+	if (_widget)
+	{
+		_widget->connect(tgui::Signals::Button::Pressed, [&]()
+			{
+				maze->resume();
+			});
+	}
 }

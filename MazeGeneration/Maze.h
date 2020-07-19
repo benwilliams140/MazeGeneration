@@ -24,6 +24,9 @@ public:
 	void reload(int, int);
 	void generate();
 
+	void pause();
+	void resume();
+
 	int getSize();
 	int getCellSize();
 
