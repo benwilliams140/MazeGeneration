@@ -10,6 +10,7 @@
 
 #include "Algorithm.h"
 #include "RecursiveBacktracking.h"
+#include "AStar.h"
 
 #include "Common.h"
 
@@ -22,6 +23,7 @@ public:
 	void update();
 	void render(Window*);
 	void reload(int, int);
+	void clear();
 	void generate();
 
 	void pause();
@@ -41,7 +43,7 @@ private:
 	Array2D<MazeCell*> maze = Array2D<MazeCell*>(size, size);
 	MazeCell* startingCell;
 
-	bool generating, solving;
+	bool generating, solving, paused;
 	Algorithm* generation;
 	Algorithm* solution;
 	std::string genAlgorithm, solAlgorithm;

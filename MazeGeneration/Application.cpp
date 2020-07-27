@@ -1,6 +1,6 @@
 #include "Application.h"
 
-Application::Application() : timeSinceLastUpdate(0), timeBetweenUpdates(0)
+Application::Application() : frameCount(0)
 {
 	srand(time(NULL));
 
@@ -51,12 +51,8 @@ void Application::getInput()
 
 void Application::update(float _deltaTime)
 {
-	timeSinceLastUpdate += _deltaTime;
-	if (timeSinceLastUpdate >= timeBetweenUpdates)
-	{
-		maze->update();
-		timeSinceLastUpdate = 0;
-	}
+	++frameCount;
+	maze->update();
 }
 
 void Application::render()

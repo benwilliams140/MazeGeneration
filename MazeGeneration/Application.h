@@ -32,8 +32,7 @@ private:
 	Maze* maze;
 	GUI* gui;
 
-	float timeSinceLastUpdate;
-	float timeBetweenUpdates;
+	int frameCount;
 };
 
 #endif

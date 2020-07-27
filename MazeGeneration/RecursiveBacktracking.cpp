@@ -7,6 +7,7 @@ RecursiveBacktracking::RecursiveBacktracking(MazeCell* _start) : Algorithm(_star
 
 bool RecursiveBacktracking::update(Array2D<MazeCell*>& _maze)
 {
+	if (prevCells.empty()) curCell->visit();
 	curCell->update();
 
 	MazeCell* _nextCell = getNextCell(_maze, curCell);

@@ -10,9 +10,10 @@
 #include "MazeWall.h"
 
 const sf::Color INITIAL_COLOR = sf::Color(146, 146, 146);
-const sf::Color VISITED_COLOR = sf::Color(255, 0, 255);
+const sf::Color VISITED_COLOR = sf::Color(255, 255, 255);
+const sf::Color CUR_CELL_COLOR = sf::Color(255, 0, 0);
 const sf::Color PATH_COLOR = sf::Color(0, 255, 0);
-const sf::Color CUR_CELL_COLOR = sf::Color(0, 0, 255);
+const sf::Color CLOSED_COLOR = sf::Color(255, 255, 0);
 
 class MazeCell
 {
@@ -31,13 +32,14 @@ public:
 
 	void setColor(sf::Color);
 	void visit();
+	void close();
 
 private:
 	sf::RectangleShape rect;
 	MazeWall* walls[4];
 
 	int col, row;
-	bool visited;
+	bool visited, closed, path;
 };
 
 #endif

@@ -1,6 +1,6 @@
 #include "MazeCell.h"
 
-MazeCell::MazeCell(int _size, int _col, int _row) : visited(false), col(_col), row(_row)
+MazeCell::MazeCell(int _size, int _col, int _row) : visited(false), closed(false), path(false), col(_col), row(_row)
 {
 	int _curX, _curY, _nextX, _nextY;
 	_curX = _col * _size;
@@ -28,12 +28,17 @@ MazeCell::MazeCell(int _size, int _col, int _row) : visited(false), col(_col), r
 
 MazeCell::~MazeCell()
 {
-
+	for (int i = 0; i < 4; ++i)
+	{
+		delete walls[i];
+	}
 }
 
 void MazeCell::update()
 {
-	if (visited) rect.setFillColor(VISITED_COLOR);
+	if (path) rect.setFillColor(PATH_COLOR);
+	else if (closed) rect.setFillColor(CLOSED_COLOR);
+	else if (visited) rect.setFillColor(VISITED_COLOR);
 }
 
 void MazeCell::render(Window* _window)
@@ -97,4 +102,8 @@ void MazeCell::visit()
 {
 	visited = true;
 	rect.setFillColor(CUR_CELL_COLOR);
+}
+
+void MazeCell::close() {
+	closed = true;
 }
